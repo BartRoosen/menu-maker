@@ -47,6 +47,6 @@ div {
     text-decoration: none;
 }
 
-.forms {
-    display: none
+.page-part-navigator {
+    padding: .5em 0;
 }

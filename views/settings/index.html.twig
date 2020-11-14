@@ -6,53 +6,37 @@
 
 {% block body %}
     {% include 'shared/menu.html.twig' %}
-    <div class="row">
-        <div class="col-4">
-            {% include 'settings/categories/table.html.twig' %}
-        </div>
-
-        <div class="col-4">
-            <div class="container">
-                <h3>Action center</h3>
-                <div style="padding-bottom: 1em">
-                    <button type="button" class="btn btn-outline-warning" id="add-category-button">Add Category</button>
-                    <button type="button" class="btn btn-outline-warning" id="add-complexity-button">Add Complexity
-                    </button>
-                    <button type="button" class="btn btn-outline-warning" id="hide-forms">Hide forms</button>
-                </div>
-                {% include 'settings/action/forms/add-category.html.twig' %}
-
-                <div class="complexity-form forms">
-                    <h4>Add complexity</h4>
-                </div>
+    <div class="page-part-navigator">
+        <button type="button" class="btn btn-outline-warning nav-button" id="first" data-target="#preferences">Preferences</button>
+        <button type="button" class="btn btn-outline-warning nav-button" data-target="#categories">Categories</button>
+        <button type="button" class="btn btn-outline-warning nav-button" data-target="#complexity">Complexity</button>
+    </div>
+    <div class="view-pane" id="categories" style="display: none">
+        <h3>Categoriën</h3>
+        <div class="row">
+            <div class="col-6">
+                {% include 'settings/categories/table.html.twig' %}
+            </div>
+            <div class="col-4">
+                {% include 'settings/categories/add-category.html.twig' %}
             </div>
         </div>
-        <div class="col-4">
-            {% include 'settings/complexity/table.html.twig' %}
+    </div>
+    <div class="view-pane" id="complexity" style="display: none">
+        <h3>Complexity</h3>
+        <div class="row">
+            <div class="col-6">
+                {% include 'settings/complexity/table.html.twig' %}
+            </div>
+            <div class="col-4">
+                {% include 'settings/complexity/add-complexity.html.twig' %}
+            </div>
         </div>
+    </div>
+    <div class="view-pane" id="preferences" style="display: none">
+        <h3>Preferences</h3>
     </div>
 {% endblock %}
 {% block scripts %}
-    <script>
-        var addCategoryButton = $('#add-category-button'),
-            addComplexityButton = $('#add-complexity-button'),
-            hideFormsButton = $('#hide-forms'),
-            categoryForm = $('.category-form'),
-            complexityForm = $('.complexity-form'),
-            forms = $('.forms');
-
-        addCategoryButton.on('click', function () {
-            forms.hide();
-            categoryForm.show();
-        });
-
-        addComplexityButton.on('click', function () {
-            forms.hide();
-            complexityForm.show();
-        });
-
-        hideFormsButton.on('click', function () {
-            forms.hide();
-        });
-    </script>
+    <script src="js/settings-nav.js"></script>
 {% endblock %}
