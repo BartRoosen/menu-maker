@@ -1,0 +1,24 @@
+home:
+  uri: /home/
+  controller: HomeController
+  action: index
+ingredients:
+  uri: /ingredients/
+  controller: IngredientsController
+  action: index
+setcategory:
+  uri: /setcategory/
+  controller: AjaxController
+  action: setCategory
+settings:
+  uri: /settings/
+  controller: SettingsController
+  action: index
+delete-ingredient:
+  uri: /delete-ingredient/
+  controller: AjaxController
+  action: deleteIngredient
+dishes:
+  uri: /dishes/
+  controller: DishesController
+  action: index

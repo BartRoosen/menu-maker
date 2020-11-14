@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-0": {"": "src/"}
+    },
+    "require": {
+        "symfony/yaml": "^5.0",
+        "twig/twig": "^2.0",
+      "ext-pdo": "*",
+        "phpmailer/phpmailer": "^6.1",
+      "ext-json": "*"
+    }
+}

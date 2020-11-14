@@ -1,0 +1,8 @@
+<div class="filter text-right">
+    <select class="form-control" id="ingredients-filter">
+        <option value="0">Show all</option>
+        {% for cat in categories %}
+            <option value="{{ cat.categoryId }}">{{ cat.categoryName }}</option>
+        {% endfor %}
+    </select>
+</div>

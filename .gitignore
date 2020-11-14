@@ -1,0 +1,4 @@
+/vendor/
+manifest.json
+offline.html
+pwabuilder-sw.js

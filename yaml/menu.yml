@@ -1,0 +1,12 @@
+1:
+  caption: home
+  path: ./home
+2:
+  caption: ingrediënten
+  path: ./ingredients
+3:
+  caption: settings
+  path: ./settings
+4:
+  caption: gerechten
+  path: ./dishes

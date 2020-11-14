@@ -1,0 +1,21 @@
+.filler-1em,
+.filler-2em,
+.filler-7em,
+.filler-10em {
+    width: 100%;
+}
+
+.filler-1em {
+    height: 1em;
+}
+
+.filler-2em {
+    height: 2em;
+}
+
+.filler-10em {
+    height: 10em;
+}
+.filler-7em {
+    height: 7em;
+}

@@ -1,0 +1,42 @@
+<div class="container">
+    <table class="table table-bordered table-dark">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>INGREDIENT NAME</th>
+            <th>
+                {% include 'ingredients/page-parts/category-filter.html.twig' %}
+                CATEGORY
+            </th>
+            <th class="text-right">ACTION</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in ingredients %}
+            <tr class="table-row {{ ingredient.ingredientCategoryId }}">
+                <td>{{ ingredient.ingredientId }}</td>
+                <td>{{ ingredient.ingredientName | capitalize }}</td>
+                <td>{{ ingredient.categoryName | capitalize }}</td>
+                <td class="text-right">
+                    <button type="button"
+                            class="btn btn-outline-success edit-button"
+                            title="edit"
+                            data-ingredient_id="{{ ingredient.ingredientId }}"
+                            data-category_id="{{ ingredient.ingredientCategoryId }}"
+                            data-ingredient_name="{{ ingredient.ingredientName }}"
+                    >
+                        <i class="fas fa-pen-square"></i>
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-danger delete-button"
+                            title="delete"
+                            data-ingredient_id="{{ ingredient.ingredientId }}"
+                    >
+                        <i class="fas fa-minus-square fa-1x"></i>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

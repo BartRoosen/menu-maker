@@ -1,0 +1,21 @@
+<h3>Add / edit ingredients</h3>
+<div class="container">
+    <form action="./ingredients" method="post">
+        <input type="number" name="id" id="ingredient-id" value="0" hidden="hidden"/>
+        <div class="form-group">
+            <label>Ingredient Name</label>
+            <input type="text" name="ingredientName" id="ingredient-name" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" name="category" id="form-category-select">
+                {% for cat in categories %}
+                    <option value="{{ cat.categoryId }}">{{ cat.categoryName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-success">Add Ingredient</button>
+        </div>
+    </form>
+</div>

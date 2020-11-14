@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    {% block title %}{% endblock %}
+    {% include 'shared/head.html.twig' %}
+</head>
+
+<body>
+{% include 'shared/header.html.twig' %}
+<div class="custom_container">
+    {% block body %}{% endblock %}
+</div>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

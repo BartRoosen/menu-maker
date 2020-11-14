@@ -1,0 +1,34 @@
+<div class="container">
+    <h3>Complexiteit</h3>
+    <table class="table table-bordered table-dark">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>ACTIVE</th>
+            <th>ACTION</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for complexity in complexities %}
+            {% set active = 'NO' %}
+            {% if 0 == complexity.complexityDeleted %}
+                {% set active = 'YES' %}
+            {% endif %}
+            <tr>
+                <td>{{ complexity.complexityId }}</td>
+                <td>{{ complexity.complexityName }}</td>
+                <td>{{ active }}</td>
+                <td class="text-right">
+                    <button type="button" class="btn btn-outline-success" title="edit">
+                        <i class="fas fa-pen-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" title="delete">
+                        <i class="fas fa-minus-square fa-1x"></i>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
