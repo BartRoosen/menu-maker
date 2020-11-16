@@ -10,7 +10,7 @@
         <div class="col-6">
             {% include 'ingredients/page-parts/table.html.twig' %}
         </div>
-        <div class="col-6">
+        <div class="col-4">
             {% include 'ingredients/page-parts/addingredientsform.html.twig' %}
         </div>
     </div>
@@ -22,76 +22,7 @@
             category = parseInt({{ category }}),
             editButton = $('.edit-button'),
             deleteButton = $('.delete-button');
-
-        $(document).ready(function () {
-            setFilter();
-        });
-
-        function setFilter() {
-            if (0 !== category) {
-                select.val(category);
-                categoryFilter.val(category).trigger('change');
-            }
-        }
-
-        categoryFilter.on('change', function () {
-            let self = $(this),
-                value = self.val(),
-                rows = $('.table-row'),
-                affectedRows = $('.' + value);
-            rows.hide();
-
-            if (0 === parseInt(value)) {
-                rows.show();
-            } else {
-                affectedRows.show();
-                select.val(value);
-            }
-
-            $.ajax({
-                type: 'POST',
-                data: {category: value},
-                url: './setcategory/',
-                dataType: 'json',
-                success: function () {
-                    // window.location = window.location.href;
-                }
-            })
-        });
-
-        editButton.on('click', function () {
-            let self = $(this),
-                ingredientId = self.data('ingredient_id'),
-                categoryId = self.data('category_id'),
-                ingredientName = self.data('ingredient_name'),
-                textIngredientId = $('#ingredient-id'),
-                textIngredientName = $('#ingredient-name'),
-                selectCategory = $('#form-category-select');
-
-            textIngredientId.val(ingredientId);
-            textIngredientName.val(ingredientName);
-            selectCategory.val(categoryId);
-        });
-
-        deleteButton.on('click', function () {
-            let self = $(this),
-                ingredientId = self.data('ingredient_id');
-
-            if (confirm('You are about to delete this ingredient, are you sure?')) {
-                $.ajax({
-                    type: 'POST',
-                    data: {ingredientId: ingredientId},
-                    url: './delete-ingredient/',
-                    dataType: 'json',
-                    success: function (response) {
-                        if ('success' === response) {
-                            window.location = window.location.href;
-                        } else {
-                            alert('Something went wrong, please try again...');
-                        }
-                    }
-                });
-            }
-        });
     </script>
+    <script src="js/filter.js"></script>
+    <script src="js/ingredients.js"></script>
 {% endblock %}

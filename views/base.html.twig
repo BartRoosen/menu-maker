@@ -9,6 +9,8 @@
 <div class="custom_container">
     {% block body %}{% endblock %}
 </div>
+{% include 'shared/message-box.html.twig' %}
+{% include 'shared/loading.html.twig' %}
 {% block scripts %}
 {% endblock %}
 </body>

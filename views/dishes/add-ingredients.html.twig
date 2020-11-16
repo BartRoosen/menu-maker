@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block body %}
+    {% include 'shared/menu.html.twig' %}
+    <div class="text-center">
+        <h1 class="dish-title">{{ dish.name | capitalize }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            {% include 'dishes/page-parts/dish-info.html.twig' %}
+        </div>
+        <div class="col-4">
+            {% include 'dishes/page-parts/included-ingredients.html.twig' %}
+        </div>
+        <div class="col-4">
+            {% include 'dishes/page-parts/ingredients.html.twig' %}
+        </div>
+    </div>
+    {% include 'dishes/page-parts/modal.html.twig' %}
+{% endblock %}
+{% block scripts %}
+    <script>
+        var categoryFilter = $('#ingredients-filter'),
+            select = $('#form-category-select'),
+            category = parseInt({{ category }}),
+            deleteIngredient = $('.delete-ingredient'),
+            addIngredientToDishButton = $('.add-ingredient-to-dish-button'),
+            addIngredientToDishSaveButton = $('#add-ingredient-to-dish-save-button');
+    </script>
+    <script src="js/filter.js"></script>
+    <script src="js/add-ingredients-to-dishes-button-controll.js"></script>
+{% endblock %}

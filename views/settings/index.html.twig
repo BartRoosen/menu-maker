@@ -35,8 +35,15 @@
     </div>
     <div class="view-pane" id="preferences" style="display: none">
         <h3>Preferences</h3>
+        <div class="row">
+            <div class="col-6">
+                {% include 'settings/preferences/table.html.twig' %}
+            </div>
+            <div class="col-4"></div>
+        </div>
     </div>
 {% endblock %}
 {% block scripts %}
     <script src="js/settings-nav.js"></script>
+    <script src="js/preferences-tweek.js"></script>
 {% endblock %}

@@ -1,0 +1,28 @@
+<div class="container">
+    <h3><span id="form_title">Add dish</span></h3>
+    <form action="./dishes" method="post">
+        <input type="text" name="id" id="input_text_id" value="0"/>
+        <div class="form-group">
+            <label>Dish name</label>
+            <input type="text" name="name" id="input_text_name" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Complexity</label>
+            <select name="complexity" class="form-control" id="select_complexity">
+                {% for complexity in complexities %}
+                    <option value="{{ complexity.complexityId }}">
+                        {{ complexity.complexityName }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Preparation time</label>
+            <input type="text" name="time" id="input_text_time" class="form-control"/>
+        </div>
+        <div class="text-right">
+            <button type="button" class="btn btn-outline-light clear-button">Clear form</button>
+            <button type="submit" class="btn btn-outline-success"><span id="submit-caption">Add dish</span></button>
+        </div>
+    </form>
+</div>

@@ -5,15 +5,17 @@ namespace Controllers;
 
 
 use Config\Config;
+use Data\PreferenceDataHandler;
 use Data\SettingsDataHandler;
 use Services\PostService;
 
 class SettingsController extends AbstractController
 {
-    const TITLE = 'MENU CREATOR';
-
     /** @var SettingsDataHandler */
     private $settingDataHandler;
+
+    /** @var PreferenceDataHandler */
+    private $preferenceDataHandler;
 
     /** @var PostService */
     private $postService;
@@ -24,8 +26,9 @@ class SettingsController extends AbstractController
     public function __construct()
     {
         parent::__construct();
-        $this->settingDataHandler = new SettingsDataHandler();
-        $this->postService        = new PostService();
+        $this->settingDataHandler    = new SettingsDataHandler();
+        $this->preferenceDataHandler = new PreferenceDataHandler();
+        $this->postService           = new PostService();
     }
 
     public function index()
@@ -54,6 +57,7 @@ class SettingsController extends AbstractController
             'menuItems'    => $this->menuItems,
             'categories'   => $this->settingDataHandler->getAllCategories(),
             'complexities' => $this->settingDataHandler->getAllComplexities(),
+            'preferences'  => $this->preferenceDataHandler->getPreferences(),
         ]);
     }
 }

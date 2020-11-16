@@ -18,6 +18,12 @@ class Ingredient
     /** @var string */
     private $categoryName;
 
+    /** @var int */
+    private $dishIngredientId;
+
+    /** @var string */
+    private $amount;
+
     /**
      * @return int
      */
@@ -80,5 +86,37 @@ class Ingredient
     public function setCategoryName($categoryName)
     {
         $this->categoryName = $categoryName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDishIngredientId()
+    {
+        return $this->dishIngredientId;
+    }
+
+    /**
+     * @param int $dishIngredientId
+     */
+    public function setDishIngredientId($dishIngredientId)
+    {
+        $this->dishIngredientId = $dishIngredientId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param string $amount
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
     }
 }

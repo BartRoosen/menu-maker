@@ -1,0 +1,46 @@
+<div class="form-modal">
+    <div class="filler-10em"></div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="container form-container">
+                <h3>Add ingredient</h3>
+                <input name="dish-id" id="form-input-dish-id" hidden="hidden"/>
+                <input name="ingredient-id" id="form-input-ingredient-id" hidden="hidden"/>
+                <div class="form-group">
+                    <label>Ingredient</label>
+                    <input type="text" name="ingredient" id="form-input-ingredient" class="form-control"
+                           disabled="disabled"/>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="text" name="amount" id="form-input-amount" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Unit</label>
+                            <select name="unit" class="form-control" id="form-select-unit">
+                                {% for unit in units %}
+                                    <option value="{{ unit.name }}">
+                                        {{ unit.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="button"
+                            class="btn btn-outline-success"
+                            id="add-ingredient-to-dish-save-button"
+                    >
+                        Add ingredient
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

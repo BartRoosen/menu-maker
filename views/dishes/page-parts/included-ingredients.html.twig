@@ -1,0 +1,20 @@
+<div class="container">
+    <h3>Included ingredients</h3>
+    <table class="table table-bordered table-dark">
+        <tbody>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td>{{ ingredient.ingredientName | capitalize }}</td>
+                <td class="text-right">{{ ingredient.amount }}</td>
+                <td class="text-right">
+                    <button class="btn btn-sm btn-outline-danger delete-ingredient"
+                            data-dish_ingredient_id="{{ ingredient.dishIngredientId }}"
+                    >
+                        Remove
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

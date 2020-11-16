@@ -96,4 +96,74 @@ class IngredientsDataHandler extends AbstractDataHandler
             ]
         );
     }
+
+    public function getIngredientsByDishId($dishId)
+    {
+        $rows = $this->select(
+            'select i.id,
+                           i.name,
+                           di.id as dishIngredientId,
+                           concat(di.amount, \' \', di.unit) as amount
+                    from dish_ingredients di
+                    left join ingredients i on (i.id = di.ingredientId and i.deleted = 0)
+                    where di.dishId = :dishId and di.deleted = 0 order by i.name;',
+            [
+                ':dishId' => $dishId,
+            ]
+        );
+
+        if (empty($rows)) {
+            return null;
+        }
+
+        $result = [];
+
+        foreach ($rows as $row) {
+            $ingredient = new Ingredient();
+            $ingredient->setIngredientId($row['id']);
+            $ingredient->setIngredientName($row['name']);
+            $ingredient->setDishIngredientId($row['dishIngredientId']);
+            $ingredient->setAmount($row['amount']);
+
+            $result[] = $ingredient;
+        }
+
+        return $result;
+    }
+
+    public function getNonSelectedIngredientsByDishId($dishId)
+    {
+        $rows = $this->select(
+            'select i.id,
+                           i.name,
+                           c.id as categoryId,
+                           c.name as categoryName
+                    from ingredients i
+                    left join category c on (c.id = i.category)
+                    where i.deleted = 0
+                      and (select id from dish_ingredients where dishId = :dishId and ingredientId = i.id and deleted = 0) is null
+                      order by i.name;',
+            [
+                ':dishId' => $dishId,
+            ]
+        );
+
+        if (empty($rows)) {
+            return null;
+        }
+
+        $result = [];
+
+        foreach ($rows as $row) {
+            $ingredient = new Ingredient();
+            $ingredient->setIngredientId($row['id']);
+            $ingredient->setIngredientName($row['name']);
+            $ingredient->setIngredientCategoryId( $row['categoryId']);
+            $ingredient->setCategoryName( $row['categoryName']);
+
+            $result[] = $ingredient;
+        }
+
+        return $result;
+    }
 }

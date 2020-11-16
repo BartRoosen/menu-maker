@@ -22,3 +22,31 @@ dishes:
   uri: /dishes/
   controller: DishesController
   action: index
+setComplexityLevel:
+  uri: /setComplexityLevel/
+  controller: AjaxController
+  action: setComplexityLevel
+setMaxTime:
+  uri: /setMaxTime/
+  controller: AjaxController
+  action: setMaxTime
+menu-maker:
+  uri: /menu-maker/
+  controller: MenuMakerController
+  action: index
+delete-dish:
+  uri: /delete-dish/
+  controller: AjaxController
+  action: deleteDish
+add-ingredients:
+  uri: /add-ingredients/
+  controller: DishesController
+  action: addIngredients
+delete-ingredient-from-dish:
+  uri: /delete-ingredient-from-dish/
+  controller: AjaxController
+  action: deleteIngredientFromDish
+add-ingredient-to-dish:
+  uri: /add-ingredient-to-dish/
+  controller: AjaxController
+  action: addIngredientToDish

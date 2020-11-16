@@ -1,0 +1,36 @@
+<div class="container">
+    <table class="table table-bordered table-dark">
+        <thead>
+        <tr>
+            <th>DAY</th>
+            <th class="text-center">MAX COMPLEXITY</th>
+            <th class="text-center">MAX TIME</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for preference in preferences %}
+            <tr>
+                <td>{{ preference.day | capitalize }}</td>
+                <td class="text-center clickable">
+                    <select class="form-control-sm selects" data-day="{{ preference.day }}">
+                        {% for level in complexities %}
+                            {% if level.complexityId == preference.maxComplexity %}
+                                <option value="{{ level.complexityId }}" selected>{{ level.complexityName }}</option>
+                            {% else %}
+                                <option value="{{ level.complexityId }}">{{ level.complexityName }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+                <td class="text-center clickable">
+                    <input type="number"
+                           class="form-control-sm inputs text-center"
+                           value="{{ preference.maxTime }}"
+                           data-day="{{ preference.day }}"
+                    />
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

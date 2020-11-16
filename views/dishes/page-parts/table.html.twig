@@ -1,4 +1,5 @@
 <div class="container">
+    <h3>Dishes</h3>
     <table class="table table-dark table-bordered">
         <thead>
         <tr>
@@ -6,15 +7,42 @@
             <th>COMPLEXITY</th>
             <th>TIME</th>
             <th># INGREDIENTS</th>
+            <th class="text-right">ACTION</th>
         </tr>
         </thead>
         <tbody>
         {% for dish in dishes %}
             <tr>
-                <td>{{ dish.name }}</td>
+                <td>{{ dish.name | capitalize }}</td>
                 <td>{{ dish.complexityName }}</td>
                 <td>{{ dish.time }}</td>
                 <td class="text-right">{{ dish.numberOfIngredients }}</td>
+                <td class="text-right">
+                    <button type="button"
+                            class="btn btn-outline-warning action-button"
+                            data-id="{{ dish.id }}"
+                            data-action="add-ingredients"
+                    >
+                        Add ingredients
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-success action-button"
+                            data-id="{{ dish.id }}"
+                            data-name="{{ dish.name }}"
+                            data-complexity="{{ dish.complexity }}"
+                            data-time="{{ dish.time }}"
+                            data-action="edit"
+                    >
+                        Edit
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-danger action-button"
+                            data-id="{{ dish.id }}"
+                            data-action="delete"
+                    >
+                        Delete
+                    </button>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

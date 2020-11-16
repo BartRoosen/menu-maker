@@ -7,36 +7,14 @@
 {% block body %}
     {% include 'shared/menu.html.twig' %}
     <div class="row">
-        <div class="col-7">
+        <div class="col-9">
             {% include 'dishes/page-parts/table.html.twig' %}
         </div>
-        <div class="col-4">
-            <div class="container">
-                <h3>Add dishes</h3>
-                <form action="./dishes" method="post">
-                    <div class="form-group">
-                        <label>Dish name</label>
-                        <input type="text" name="name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Complexity</label>
-                        <select name="complexity" class="form-control">
-                            {% for complexity in complexities %}
-                                <option value="{{ complexity.complexityId }}">{{ complexity.complexityName }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Preparation time</label>
-                        <input type="number" name="time" class="form-control"/>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-outline-success">Add dish</button>
-                    </div>
-                </form>
-            </div>
+        <div class="col-3">
+            {% include 'dishes/page-parts/form.html.twig' %}
         </div>
     </div>
 {% endblock %}
 {% block scripts %}
+    <script src="js/dishes.js"></script>
 {% endblock %}

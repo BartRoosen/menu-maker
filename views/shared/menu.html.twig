@@ -1,15 +1,10 @@
 <div class="menu">
     {% for item in menuItems %}
         <div class="menu-item">
-            <a class="menu-link" href="{{ item['path'] }}">{{ item['caption'] | capitalize }}</a>
+            <a class="menu-link" href="{{ item['path'] }}">
+                <i class="{{ item['fa'] }}"></i>
+                {{ item['caption'] | capitalize }}
+            </a>
         </div>
     {% endfor %}
-
-{#    #}
-{#    <div class="menu-item">#}
-{#        <a class="menu-link" href="./home">Home</a>#}
-{#    </div>#}
-{#    <div class="menu-item">#}
-{#        <a class="menu-link" href="./ingredients">Ingrediënten</a>#}
-{#    </div>#}
 </div>

@@ -1,4 +1,5 @@
 <div class="container">
+    <h3>Ingredients</h3>
     <table class="table table-bordered table-dark">
         <thead>
         <tr>
@@ -25,14 +26,16 @@
                             data-category_id="{{ ingredient.ingredientCategoryId }}"
                             data-ingredient_name="{{ ingredient.ingredientName }}"
                     >
-                        <i class="fas fa-pen-square"></i>
+{#                        <i class="fas fa-pen-square"></i>#}
+                        edit
                     </button>
                     <button type="button"
                             class="btn btn-outline-danger delete-button"
                             title="delete"
                             data-ingredient_id="{{ ingredient.ingredientId }}"
                     >
-                        <i class="fas fa-minus-square fa-1x"></i>
+{#                        <i class="fas fa-minus-square fa-1x"></i>#}
+                        delete
                     </button>
                 </td>
             </tr>

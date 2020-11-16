@@ -1,12 +1,20 @@
 1:
   caption: home
   path: ./home
+  fa: fas fa-campground
 2:
-  caption: ingrediënten
+  caption: ingredients
   path: ./ingredients
+  fa: fas fa-carrot
 3:
   caption: settings
   path: ./settings
+  fa: fas fa-cog
 4:
-  caption: gerechten
+  caption: dishes
   path: ./dishes
+  fa: fas fa-utensils
+5:
+  caption: menu maker
+  path: ./menu-maker
+  fa: far fa-map
