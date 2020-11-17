@@ -5,7 +5,9 @@ namespace Controllers;
 
 use Data\DishesDataHandler;
 use Data\IngredientsDataHandler;
+use Data\MenuDataHandler;
 use Data\PreferenceDataHandler;
+use Data\UnitDataHandler;
 use Services\SessionService;
 
 class AjaxController extends AbstractController
@@ -115,6 +117,103 @@ class AjaxController extends AbstractController
         }
 
         echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function deleteUnit()
+    {
+        if (isset($_POST, $_POST['id']) && '' !== $_POST['id']) {
+            $unitsDataHandler = new UnitDataHandler();
+            $unitsDataHandler->deleteUnit($_POST);
+
+            echo json_encode('The unit has been successfully deleted');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function updateUnit()
+    {
+        if (isset($_POST, $_POST['id'], $_POST['name']) && '' !== $_POST['id'] && '' !== $_POST['name']) {
+            $unitsDataHandler = new UnitDataHandler();
+            $unitsDataHandler->updateUnit($_POST);
+
+            echo json_encode('The unit has been successfully changed');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function saveNewUnit()
+    {
+        if (isset($_POST, $_POST['name']) && '' !== $_POST['name']) {
+            $unitsDataHandler = new UnitDataHandler();
+            $id               = $unitsDataHandler->saveNewUnit($_POST);
+
+            echo json_encode(
+                [
+                    'message' => 'The new unit has been saved successfully',
+                    'id'      => $id,
+                ]
+            );
+            die;
+        }
+
+        echo json_encode(
+            [
+                'message' => 'Something went wrong, please try again',
+                'id'      => null,
+            ]
+        );
+        die;
+    }
+
+    public function changeMenuOfTheDay()
+    {
+        if (isset($_POST, $_POST['id'], $_POST['dishId']) && '' !== $_POST['id'] && '' !== $_POST['dishId']) {
+            $menuDataHandler = new MenuDataHandler();
+            $menuDataHandler->changeMenuOfTheDay($_POST);
+
+            echo json_encode(
+                [
+                    'message' => 'The menu for the day has been changed successfully',
+                ]
+            );
+            die;
+        }
+
+        echo json_encode(
+            [
+                'message' => 'Something went wrong, please try again',
+            ]
+        );
+        die;
+    }
+
+    public function checkForExistingDate()
+    {
+        if (isset($_POST, $_POST['date']) && '' !== $_POST['date']) {
+            $menuDataHandler = new MenuDataHandler();
+            if ($menuDataHandler->findExistingDate($_POST)) {
+                // date doesn't exist
+                // find out what day this is and gather dishes...
+                $day = date('l', strtotime($_POST['date']));
+
+                echo json_encode(
+                    [
+                        'day'    => $day,
+                        'dishes' => $menuDataHandler->getPossibleDishesByDay($day),
+                    ]
+                );
+                die;
+            }
+        }
+
+        echo json_encode(false);
         die;
     }
 }

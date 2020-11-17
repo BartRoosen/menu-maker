@@ -1,0 +1,34 @@
+<div class="form-modal" id="edit-modal">
+    <div class="filler-10em"></div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="container form-container">
+                <h3>Edit unit</h3>
+                <input type="text" id="unit-id" hidden="hidden"/>
+                <div class="form-group">
+                    <label>Unit name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="unit-name"
+                           maxlength="5"/>
+                </div>
+                <div class="text-right">
+                    <button type="button"
+                            class="btn btn-outline-light action-button"
+                            data-action="cancel-edit"
+                    >
+                        Cancel
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-success action-button"
+                            id="update-unit-button"
+                            data-action="save-changes"
+                    >
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

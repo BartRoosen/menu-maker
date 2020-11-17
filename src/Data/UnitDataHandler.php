@@ -30,4 +30,35 @@ class UnitDataHandler extends AbstractDataHandler
 
         return $result;
     }
+
+    public function deleteUnit($post)
+    {
+        $this->insert(
+            'update units set deleted = 1 where id = :id;',
+            [
+                ':id' => $post['id'],
+            ]
+        );
+    }
+
+    public function updateUnit($post)
+    {
+        $this->insert(
+            'update units set name = :name where id = :id;',
+            [
+                ':name' => $post['name'],
+                ':id'   => $post['id'],
+            ]
+        );
+    }
+
+    public function saveNewUnit($post)
+    {
+        return $this->insert(
+            'insert into units (name) values (:name);',
+            [
+                ':name' => $post['name'],
+            ]
+        );
+    }
 }

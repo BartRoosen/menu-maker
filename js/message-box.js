@@ -9,14 +9,15 @@ showMessage = function (message, delay) {
     messageBoxDiv.animate({
         opacity: 1
     }, 1000);
-    hideMessage(messageBoxDiv, delay);
+    hideMessage(messageBoxDiv, loading, delay);
 };
 
-hideMessage = function (messageBoxDiv, delay = 2000) {
+hideMessage = function (messageBoxDiv, loading, delay = 2000) {
     setTimeout(function () {
         messageBoxDiv.animate({
             opacity: 0
         }, 1000);
         messageBoxDiv.hide();
+        loading.hide();
     }, delay)
 };

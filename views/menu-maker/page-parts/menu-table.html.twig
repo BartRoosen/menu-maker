@@ -1,0 +1,55 @@
+<div class="container">
+    <table class="table table-dark table-bordered">
+        <tbody>
+        <tr>
+            <td colspan="4" class="text-right">
+                <button class="btn btn-sm btn-outline-warning action-button"
+                        data-action="open-form-modal"
+                >
+                    Add
+                </button>
+            </td>
+        </tr>
+        {% if null == menu %}
+            {% include 'shared/no-data.html.twig' %}
+        {% endif %}
+        {% for day in days %}
+            <tr>
+                <td>{{ day.day }}</td>
+                <td>{{ day.date }}</td>
+                <td>
+                    <div id="view_{{ day.id }}" class="list_views">
+                        {{ day.dishname | capitalize }}
+                    </div>
+                    <div id="form_{{ day.id }}" class="list_forms" style="display: none">
+                        <select class="form-control-sm dish-selector"
+                                id="select_{{ day.id }}"
+                                data-id="{{ day.id }}"
+                        >
+                            {% for dish in dishes %}
+                                {% if dish.complexity <= day.maxComplexity and dish.time <= day.maxTime %}
+                                    {% if dish.id == day.dishId %}
+                                        <option value="{{ dish.id }}" selected="selected">{{ dish.name | capitalize }}</option>
+                                    {% else %}
+                                        <option value="{{ dish.id }}">{{ dish.name | capitalize }}</option>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <button type="button" class="btn btn-sm btn-outline-success action-button"
+                            data-form_id="#form_{{ day.id }}"
+                            data-view_id="#view_{{ day.id }}"
+                            data-action="open-form"
+                    >
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

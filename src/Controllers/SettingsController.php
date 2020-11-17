@@ -7,6 +7,7 @@ namespace Controllers;
 use Config\Config;
 use Data\PreferenceDataHandler;
 use Data\SettingsDataHandler;
+use Data\UnitDataHandler;
 use Services\PostService;
 
 class SettingsController extends AbstractController
@@ -16,6 +17,9 @@ class SettingsController extends AbstractController
 
     /** @var PreferenceDataHandler */
     private $preferenceDataHandler;
+
+    /** @var UnitDataHandler */
+    private $unitsDataHandler;
 
     /** @var PostService */
     private $postService;
@@ -28,6 +32,7 @@ class SettingsController extends AbstractController
         parent::__construct();
         $this->settingDataHandler    = new SettingsDataHandler();
         $this->preferenceDataHandler = new PreferenceDataHandler();
+        $this->unitsDataHandler      = new UnitDataHandler();
         $this->postService           = new PostService();
     }
 
@@ -58,6 +63,7 @@ class SettingsController extends AbstractController
             'categories'   => $this->settingDataHandler->getAllCategories(),
             'complexities' => $this->settingDataHandler->getAllComplexities(),
             'preferences'  => $this->preferenceDataHandler->getPreferences(),
+            'units'        => $this->unitsDataHandler->getUnits(),
         ]);
     }
 }

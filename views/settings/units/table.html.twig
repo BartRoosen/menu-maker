@@ -1,0 +1,71 @@
+<div class="container">
+    <table class="table table-bordered table-dark" id="units-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>UNIT</th>
+            <th class="text-right">
+               <div class="row">
+                   <div class="col-6">ACTION</div>
+                   <div class="col-6">
+                       <button type="button"
+                               class="btn btn-sm btn-outline-warning action-button"
+                               data-action="open-new-unit-form"
+                       >
+                           Add unit
+                       </button>
+                   </div>
+               </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="add-unit-form" style="display: none; background-color: black;">
+            <td></td>
+            <td>
+                <input type="text" maxlength="5" id="new-unit-name" class="form-control"/>
+            </td>
+            <td class="text-right">
+                <button type="button"
+                        class="btn btn-sm btn-outline-light action-button"
+                        data-action="cancel-new-unit"
+                >
+                    Cancel
+                </button>
+                <button type="button"
+                        class="btn btn-sm btn-outline-success action-button"
+                        data-action="save-new-unit"
+                >
+                    Save unit
+                </button>
+            </td>
+        </tr>
+        {% if null == units %}
+        {% include 'shared/no-data.html.twig' %}
+        {% endif %}
+        {% for unit in units %}
+            <tr id="line_{{ unit.id }}">
+                <td>{{ unit.id }}</td>
+                <td id="unit_{{ unit.name }}_{{ unit.id }}">{{ unit.name }}</td>
+                <td class="text-right">
+                    <button type="button"
+                            class="btn btn-sm btn-outline-success action-button"
+                            data-id="{{ unit.id }}"
+                            data-name="{{ unit.name }}"
+                            data-action="edit"
+                    >
+                        Edit
+                    </button>
+                    <button type="button"
+                            class="btn btn-sm btn-outline-danger action-button"
+                            data-id="{{ unit.id }}"
+                            data-action="delete"
+                    >
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

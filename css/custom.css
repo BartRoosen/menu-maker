@@ -73,7 +73,7 @@ div {
     width: 35%;
 }
 
-.dish-title {
+.dish-title, .settings-title {
     background-color: rgb(102, 195, 34);
     padding: 0.2em;
 }
@@ -95,4 +95,29 @@ div {
 .form-container {
     padding: 1em;
     background-color: black;
+}
+
+.no-data {
+    padding: 0.5em;
+    background-color: #212529;
+    color: #777777;
+}
+
+#day-indicator {
+    font-size: 1.5em;
+}
+
+.dish-selector {
+    padding: 0.5em;
+    background-color: #171A1D;
+    border: 1px solid #212529;
+    cursor: pointer;
+}
+
+.dish-selector:hover {
+    border: 1px solid #66C322;
+}
+
+#posible-dishes {
+    padding: 1em;
 }

@@ -50,3 +50,23 @@ add-ingredient-to-dish:
   uri: /add-ingredient-to-dish/
   controller: AjaxController
   action: addIngredientToDish
+delete-unit:
+  uri: /delete-unit/
+  controller: AjaxController
+  action: deleteUnit
+update-unit:
+  uri: /update-unit/
+  controller: AjaxController
+  action: updateUnit
+save-new-unit:
+  uri: /save-new-unit/
+  controller: AjaxController
+  action: saveNewUnit
+change-menu-of-the-day:
+  uri: /change-menu-of-the-day/
+  controller: AjaxController
+  action: changeMenuOfTheDay
+check-for-existing-date:
+  uri: /check-for-existing-date/
+  controller: AjaxController
+  action: checkForExistingDate

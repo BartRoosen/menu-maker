@@ -1,0 +1,34 @@
+<div class="form-modal">
+    <div class="filler-10em"></div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="container form-container">
+                <h3>Add menu item</h3>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" min="{{ today }}" class="form-control" id="date-selector"/>
+                    <div class="alert alert-danger" id="wrong-date" style="display: none">
+                        The date selected is already in the menu!
+                    </div>
+                </div>
+                <div id="day-indicator"></div>
+                <div id="posible-dishes"></div>
+                <div class="text-right">
+                    <button type="button"
+                            class="btn btn-outline-light action-button"
+                            data-action="cancel"
+                    >
+                        Cancel
+                    </button>
+{#                    <button type="button"#}
+{#                            class="btn btn-outline-success"#}
+{#                            id="add-ingredient-to-dish-save-button"#}
+{#                    >#}
+{#                        Add menu item#}
+{#                    </button>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

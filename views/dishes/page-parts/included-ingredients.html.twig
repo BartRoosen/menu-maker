@@ -2,6 +2,9 @@
     <h3>Included ingredients</h3>
     <table class="table table-bordered table-dark">
         <tbody>
+        {% if null == ingredients %}
+            {% include 'shared/no-data.html.twig' %}
+        {% endif %}
         {% for ingredient in ingredients %}
             <tr>
                 <td>{{ ingredient.ingredientName | capitalize }}</td>

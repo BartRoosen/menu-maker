@@ -6,8 +6,18 @@
 
 {% block body %}
     {% include 'shared/menu.html.twig' %}
-    {% include 'under_construction.html.twig' %}
-
+    <div class="text-center">
+        <h1 class="settings-title">Menu maker</h1>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            {% include 'menu-maker/page-parts/menu-table.html.twig' %}
+        </div>
+        <div class="col-1"></div>
+    </div>
+    {% include 'menu-maker/page-parts/add-modal.html.twig' %}
 {% endblock %}
 {% block scripts %}
+    <script src="js/menu-maker.js"></script>
 {% endblock %}
