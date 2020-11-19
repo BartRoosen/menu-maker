@@ -216,4 +216,57 @@ class AjaxController extends AbstractController
         echo json_encode(false);
         die;
     }
+
+    public function addMenuItem()
+    {
+        if (isset($_POST, $_POST['dishId'], $_POST['date']) && '' !== $_POST['dishId'] && '' !== $_POST['date']) {
+            $menuDataHandler = new MenuDataHandler();
+
+            if ($menuDataHandler->addMenuItem($_POST)) {
+
+                echo json_encode('The menu item has been added successfully');
+                die;
+            }
+
+            echo json_encode('Something went wrong, please try again');
+            die;
+
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function deleteMenuItem()
+    {
+        if (isset($_POST, $_POST['id']) && '' !== $_POST['id']) {
+            $menuDataHandler = new MenuDataHandler();
+            $menuDataHandler->deleteMenuItem($_POST);
+
+            echo json_encode('The menu item is being removed...');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function AddNewIngredient()
+    {
+        if (
+            isset($_POST, $_POST['id'], $_POST['ingredientName'], $_POST['category']) &&
+            '' !== $_POST['id'] &&
+            '' !== $_POST['ingredientName'] &&
+            '' !== $_POST['category']
+        ) {
+            $ingredientDataHandler = new IngredientsDataHandler();
+            $ingredientDataHandler->addNewIngredient($_POST);
+
+            echo json_encode('The ingredient is being added...');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
 }

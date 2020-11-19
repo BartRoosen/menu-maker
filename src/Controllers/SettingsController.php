@@ -59,6 +59,7 @@ class SettingsController extends AbstractController
         return $this->twigService->render('settings/index.html.twig', [
             'base_path'    => $this->basePath,
             'title'        => Config::SITE_NAME,
+            'pageName'     => 'settings',
             'menuItems'    => $this->menuItems,
             'categories'   => $this->settingDataHandler->getAllCategories(),
             'complexities' => $this->settingDataHandler->getAllComplexities(),

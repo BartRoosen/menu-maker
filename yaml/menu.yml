@@ -18,3 +18,11 @@
   caption: menu maker
   path: ./menu-maker
   fa: far fa-map
+6:
+  caption: shopping list
+  path: ./shopping-list
+  fa: fas fa-shopping-bag
+7:
+  caption: inspiration
+  path: ./inspiration
+  fa: far fa-lightbulb

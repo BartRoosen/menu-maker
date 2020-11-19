@@ -6,11 +6,8 @@ namespace Controllers;
 
 use Config\Config;
 
-class HomeController extends AbstractController
+class InspirationController extends AbstractController
 {
-    /**
-     * HomeController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
@@ -18,10 +15,10 @@ class HomeController extends AbstractController
 
     public function index()
     {
-        return $this->twigService->render('home/index.html.twig', [
+        return $this->twigService->render('inspiration/index.html.twig', [
             'base_path' => $this->basePath,
             'title'     => Config::SITE_NAME,
-            'pageName'  => 'home',
+            'pageName'  => 'inspiration',
             'menuItems' => $this->menuItems,
         ]);
     }

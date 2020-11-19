@@ -6,56 +6,50 @@
 
 {% block body %}
     {% include 'shared/menu.html.twig' %}
-    <div class="page-part-navigator">
-        <button type="button" class="btn btn-outline-warning nav-button" id="first" data-target="#preferences">Preferences</button>
-        <button type="button" class="btn btn-outline-warning nav-button" data-target="#categories">Categories</button>
-        <button type="button" class="btn btn-outline-warning nav-button" data-target="#complexity">Complexity</button>
-        <button type="button" class="btn btn-outline-warning nav-button" data-target="#units">Units</button>
-    </div>
-    <div class="view-pane" id="categories" style="display: none">
-        <div class="text-center">
-            <h1 class="settings-title">Categories</h1>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {% include 'settings/categories/table.html.twig' %}
-            </div>
-            <div class="col-4">
-                {% include 'settings/categories/add-category.html.twig' %}
+    {% include 'shared/page-title.html.twig' %}
+    <div class="row">
+        <div class="col-2" style="min-height: 100vh">
+            <div class="page-part-navigator">
+                <button type="button" class="btn btn-outline-warning nav-button" id="first" data-target="#preferences">Preferences</button>
+                <button type="button" class="btn btn-outline-warning nav-button" data-target="#categories">Categories</button>
+                <button type="button" class="btn btn-outline-warning nav-button" data-target="#complexity">Complexity</button>
+                <button type="button" class="btn btn-outline-warning nav-button" data-target="#units">Units</button>
             </div>
         </div>
-    </div>
-    <div class="view-pane" id="complexity" style="display: none">
-        <div class="text-center">
-            <h1 class="settings-title">Complexity</h1>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {% include 'settings/complexity/table.html.twig' %}
+        <div class="col-10">
+            <div class="view-pane" id="categories" style="display: none">
+                <div class="row">
+                    <div class="col-8">
+                        {% include 'settings/categories/table.html.twig' %}
+                    </div>
+                    <div class="col-4">
+                        {% include 'settings/categories/add-category.html.twig' %}
+                    </div>
+                </div>
             </div>
-            <div class="col-4">
-                {% include 'settings/complexity/add-complexity.html.twig' %}
+            <div class="view-pane" id="complexity" style="display: none">
+                <div class="row">
+                    <div class="col-12">
+                        {% include 'settings/complexity/table.html.twig' %}
+                    </div>
+{#                    <div class="col-4">#}
+{#                        {% include 'settings/complexity/add-complexity.html.twig' %}#}
+{#                    </div>#}
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="view-pane" id="preferences" style="display: none">
-        <div class="text-center">
-            <h1 class="settings-title">Preferences</h1>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {% include 'settings/preferences/table.html.twig' %}
+            <div class="view-pane" id="preferences" style="display: none">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        {% include 'settings/preferences/table.html.twig' %}
+                    </div>
+                </div>
             </div>
-            <div class="col-4"></div>
-        </div>
-    </div>
-    <div class="view-pane" id="units" style="display: none">
-        <div class="text-center">
-            <h1 class="settings-title">Units</h1>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {% include 'settings/units/table.html.twig' %}
+            <div class="view-pane" id="units" style="display: none">
+                <div class="row">
+                    <div class="col-12">
+                        {% include 'settings/units/table.html.twig' %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

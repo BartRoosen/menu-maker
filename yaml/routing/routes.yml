@@ -70,3 +70,23 @@ check-for-existing-date:
   uri: /check-for-existing-date/
   controller: AjaxController
   action: checkForExistingDate
+add-menu-item:
+  uri: /add-menu-item/
+  controller: AjaxController
+  action: addMenuItem
+delete-menu-item:
+  uri: /delete-menu-item/
+  controller: AjaxController
+  action: deleteMenuItem
+shopping-list:
+  uri: /shopping-list/
+  controller: ShoppingListController
+  action: index
+inspiration:
+  uri: /inspiration/
+  controller: InspirationController
+  action: index
+add-new-ingredient:
+  uri: /add-new-ingredient/
+  controller: AjaxController
+  action: AddNewIngredient

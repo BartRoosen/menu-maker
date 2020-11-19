@@ -23,7 +23,7 @@ class MenuDataHandler extends AbstractDataHandler
                     from menu m
                     left join dishes d on (d.id = m.dishId)
                     left join preferences p on (p.day = m.day)
-                    where m.deleted = 0 and date >= :dateString;',
+                    where m.deleted = 0 and date >= :dateString order by m.date;',
             [
                 ':dateString' => date('Y-m-d'),
             ]
@@ -121,5 +121,26 @@ class MenuDataHandler extends AbstractDataHandler
         }
 
         return null;
+    }
+
+    public function addMenuItem($post)
+    {
+        return $this->insert(
+            'insert into menu (date, dishId) VALUES (:date, :dishId);',
+            [
+                ':dishId' => $post['dishId'],
+                ':date'   => $post['date'],
+            ]
+        );
+    }
+
+    public function deleteMenuItem($post)
+    {
+        $this->delete(
+            'delete from menu where id = :id;',
+            [
+                ':id' => $post['id'],
+            ]
+        );
     }
 }

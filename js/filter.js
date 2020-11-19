@@ -23,6 +23,8 @@ categoryFilter.on('change', function () {
         select.val(value);
     }
 
+    categoryFilterLine.hide();
+
     $.ajax({
         type: 'POST',
         data: {category: value},

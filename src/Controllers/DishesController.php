@@ -53,6 +53,7 @@ class DishesController extends AbstractController
         return $this->twigService->render('dishes/index.html.twig', [
             'base_path'    => $this->basePath,
             'title'        => Config::SITE_NAME,
+            'pageName'     => 'dishes',
             'menuItems'    => $this->menuItems,
             'dishes'       => $this->dishesDataHandler->getAllDishes(),
             'complexities' => $this->dishesDataHandler->getComplexity(),

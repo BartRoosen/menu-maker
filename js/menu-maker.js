@@ -19,12 +19,33 @@ body.on('click', '.action-button', function () {
         case 'cancel':
             formModal.hide();
             break;
+        case 'delete':
+            deleteMenuItem(self.data('id'));
+            break;
         default:
             break;
     }
 });
 
-$('.dish-selector').on('change', function () {
+deleteMenuItem = function (id) {
+    if (confirm('You are about to delete a menu item, are you sure?')) {
+        $.ajax({
+            type: 'POST',
+            data: {id: id},
+            url: './delete-menu-item/',
+            dataType: 'json',
+            success: function (response) {
+                showMessage(response);
+            },
+        }).done(function () {
+            setTimeout(function () {
+                window.location = window.location.href;
+            }, 2000);
+        });
+    }
+};
+
+$('.dish-select').on('change', function () {
     let self = $(this),
         id = self.data('id'),
         selectOption = '#select_' + id + ' option:selected';
@@ -53,9 +74,12 @@ $('.dish-selector').on('change', function () {
 dateSelector.on('change', function () {
     wrongDate.hide();
     possibleDishes.html('');
+
+    let date = $(this).val();
+
     $.ajax({
         type: 'POST',
-        data: {date: $(this).val()},
+        data: {date: date},
         url: './check-for-existing-date/',
         dataType: 'json',
         success: function (response) {
@@ -68,7 +92,7 @@ dateSelector.on('change', function () {
                 $('#day-indicator').html(response.day);
                 if (null !== response.dishes) {
                     $.each(response.dishes, function (key, name) {
-                        let dish = '<div class="dish-selector" data-id="' + key + '">'+ name +'</div>';
+                        let dish = '<div class="dish-selector" data-id="' + key + '" data-date="' + date + '">' + name + '</div>';
                         possibleDishes.append(dish);
                     });
                 }
@@ -78,7 +102,23 @@ dateSelector.on('change', function () {
 });
 
 body.on('click', '.dish-selector', function () {
-    let id = $(this).data('id');
+    let self = $(this),
+        data = {
+            dishId: self.data('id'),
+            date: self.data('date')
+        };
 
-    alert('good choice : ' + id);
+    $.ajax({
+        type: 'POST',
+        data: data,
+        url: './add-menu-item/',
+        dataType: 'json',
+        success: function (response) {
+            showMessage(response);
+        },
+    }).done(function () {
+        setTimeout(function () {
+            window.location = window.location.href;
+        }, 2000);
+    });
 });

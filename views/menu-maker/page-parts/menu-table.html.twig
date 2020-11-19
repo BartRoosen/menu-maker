@@ -22,7 +22,7 @@
                         {{ day.dishname | capitalize }}
                     </div>
                     <div id="form_{{ day.id }}" class="list_forms" style="display: none">
-                        <select class="form-control-sm dish-selector"
+                        <select class="form-control-sm dish-select"
                                 id="select_{{ day.id }}"
                                 data-id="{{ day.id }}"
                         >
@@ -46,7 +46,13 @@
                     >
                         Edit
                     </button>
-                    <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                    <button type="button"
+                            class="btn btn-sm btn-outline-danger action-button"
+                            data-id="{{ day.id }}"
+                            data-action="delete"
+                    >
+                        Delete
+                    </button>
                 </td>
             </tr>
         {% endfor %}

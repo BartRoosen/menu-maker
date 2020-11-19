@@ -31,6 +31,7 @@ class MenuMakerController extends AbstractController
         return $this->twigService->render('menu-maker/index.html.twig', [
             'base_path' => $this->basePath,
             'title'     => Config::SITE_NAME,
+            'pageName'  => 'menu maker',
             'menuItems' => $this->menuItems,
             'days'      => $this->menuDataHandler->getMenu(),
             'dishes'    => $this->dishesDataHandler->getAllDishes(),

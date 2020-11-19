@@ -34,12 +34,13 @@ class IngredientsController extends AbstractController
         }
         $category = (int)$this->sessionService->getValue('category');
         return $this->twigService->render('ingredients/index.html.twig', [
-            'base_path'       => $this->basePath,
-            'title'           => Config::SITE_NAME,
-            'menuItems'       => $this->menuItems,
-            'ingredients'     => $this->ingredientsDataHandler->getAllIngredients(),
-            'categories'      => $this->ingredientsDataHandler->getCategories(),
-            'category' => $category,
+            'base_path'   => $this->basePath,
+            'title'       => Config::SITE_NAME,
+            'pageName'    => 'ingredients',
+            'menuItems'   => $this->menuItems,
+            'ingredients' => $this->ingredientsDataHandler->getAllIngredients(),
+            'categories'  => $this->ingredientsDataHandler->getCategories(),
+            'category'    => $category,
         ]);
     }
 }

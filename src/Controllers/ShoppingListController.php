@@ -6,10 +6,10 @@ namespace Controllers;
 
 use Config\Config;
 
-class HomeController extends AbstractController
+class ShoppingListController extends AbstractController
 {
     /**
-     * HomeController constructor.
+     * ShoppingListController constructor.
      */
     public function __construct()
     {
@@ -18,10 +18,10 @@ class HomeController extends AbstractController
 
     public function index()
     {
-        return $this->twigService->render('home/index.html.twig', [
+        return $this->twigService->render('shopping-list/index.html.twig', [
             'base_path' => $this->basePath,
             'title'     => Config::SITE_NAME,
-            'pageName'  => 'home',
+            'pageName'  => 'shopping list',
             'menuItems' => $this->menuItems,
         ]);
     }

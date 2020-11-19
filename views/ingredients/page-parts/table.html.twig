@@ -3,41 +3,133 @@
     <table class="table table-bordered table-dark">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>INGREDIENT NAME</th>
+            <th colspan="3" class="text-right">
+                <button class="btn btn-sm btn-outline-warning action-button"
+                        data-action="open-add-ingredient-form-line"
+                >
+                    Add ingredient
+                </button>
+            </th>
+        </tr>
+        <tr id="add-ingredient-form-line" style="display: none">
             <th>
-                {% include 'ingredients/page-parts/category-filter.html.twig' %}
-                CATEGORY
+                <input type="text" name="ingredientName" id="ingredient-name" class="form-control"/>
+            </th>
+            <th>
+                <select class="form-control" name="category" id="form-category-select">
+                    {% for cat in categories %}
+                        <option value="{{ cat.categoryId }}">{{ cat.categoryName }}</option>
+                    {% endfor %}
+                </select>
+            </th>
+            <th class="text-right">
+                <button type="button"
+                        class="btn btn-sm btn-outline-light action-button"
+                        data-action="close-add-ingredient-form-line"
+                >
+                    Cancel
+                </button>
+                <button type="button"
+                        class="btn btn-sm btn-outline-success action-button"
+                        data-action="save-new-ingredient"
+                >
+                    Add Ingredient
+                    </button>
+            </th>
+        </tr>
+        <tr>
+            <th>INGREDIENT NAME</th>
+            <th class="action-button" data-action="open-filter-line">
+                <div class="row">
+                    <div class="col-6">CATEGORY</div>
+                    <div class="col-6 text-right"><i class="fas fa-caret-down"></i></div>
+                </div>
             </th>
             <th class="text-right">ACTION</th>
+        </tr>
+        <tr id="category-filter-line" style="display: none">
+            <th></th>
+            <th>{% include 'ingredients/page-parts/category-filter.html.twig' %}</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% for ingredient in ingredients %}
-            <tr class="table-row {{ ingredient.ingredientCategoryId }}">
-                <td>{{ ingredient.ingredientId }}</td>
+            <tr class="table-row {{ ingredient.ingredientCategoryId }}"
+                id="display-row_{{ ingredient.ingredientId }}"
+            >
                 <td>{{ ingredient.ingredientName | capitalize }}</td>
                 <td>{{ ingredient.categoryName | capitalize }}</td>
                 <td class="text-right">
                     <button type="button"
-                            class="btn btn-outline-success edit-button"
-                            title="edit"
-                            data-ingredient_id="{{ ingredient.ingredientId }}"
-                            data-category_id="{{ ingredient.ingredientCategoryId }}"
-                            data-ingredient_name="{{ ingredient.ingredientName }}"
+                            class="btn btn-sm btn-outline-success action-button"
+                            data-action="open-edit-ingredient-form-line"
+                            data-target_open="#form-row_{{ ingredient.ingredientId }}"
+                            data-target_close="#display-row_{{ ingredient.ingredientId }}"
                     >
-{#                        <i class="fas fa-pen-square"></i>#}
-                        edit
+                        Edit
                     </button>
                     <button type="button"
-                            class="btn btn-outline-danger delete-button"
+                            class="btn btn-sm btn-outline-danger action-button"
                             title="delete"
                             data-ingredient_id="{{ ingredient.ingredientId }}"
+                            data-action="delete-ingredient"
                     >
-{#                        <i class="fas fa-minus-square fa-1x"></i>#}
-                        delete
+                        Delete
                     </button>
                 </td>
+            </tr>
+            <tr id="form-row_{{ ingredient.ingredientId }}"
+                class="form-rows"
+                style="display: none"
+            >
+                <td>
+                    <input type="text"
+                           name="ingredientName"
+                           id="name_{{ ingredient.ingredientId }}"
+                           class="form-control"
+                           value="{{ ingredient.ingredientName }}"
+                    />
+                </td>
+                <td>
+                    <select class="form-control"
+                            name="category"
+                            id="category_{{ ingredient.ingredientId }}">
+                        {% for cat in categories %}
+                            {% if ingredient.ingredientCategoryId == cat.categoryId %}
+                                <option value="{{ cat.categoryId }}" selected="selected">{{ cat.categoryName }}</option>
+                            {% else %}
+                                <option value="{{ cat.categoryId }}">{{ cat.categoryName }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+                <td class="text-right">
+                    <button type="button"
+                            class="btn btn-sm btn-outline-light action-button"
+                            data-action="cancel-edit-form-line"
+                            data-target_close="#form-row_{{ ingredient.ingredientId }}"
+                            data-target_open="#display-row_{{ ingredient.ingredientId }}"
+                    >
+                        Cancel
+                    </button>
+                    <button type="button"
+                            class="btn btn-sm btn-outline-success action-button"
+                            data-action="save-changes"
+                            data-id="{{ ingredient.ingredientId }}"
+                            data-target_category="#category_{{ ingredient.ingredientId }}"
+                            data-target_name="#name_{{ ingredient.ingredientId }}"
+                            data-target_spinner="#spinner_{{ ingredient.ingredientId }}"
+                            data-target_close="#form-row_{{ ingredient.ingredientId }}"
+                    >
+                        Save changes
+                    </button>
+                </td>
+            </tr>
+            <tr id="spinner_{{ ingredient.ingredientId }}" style="display: none">
+                <td><i class="fas fa-spinner fa-2x fa-spin"></i></td>
+                <td><i class="fas fa-spinner fa-2x fa-spin"></i></td>
+                <td><i class="fas fa-spinner fa-2x fa-spin"></i></td>
             </tr>
         {% endfor %}
         </tbody>

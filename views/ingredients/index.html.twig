@@ -6,13 +6,14 @@
 
 {% block body %}
     {% include 'shared/menu.html.twig' %}
+    {% include 'shared/page-title.html.twig' %}
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             {% include 'ingredients/page-parts/table.html.twig' %}
         </div>
-        <div class="col-4">
-            {% include 'ingredients/page-parts/addingredientsform.html.twig' %}
-        </div>
+{#        <div class="col-4">#}
+{#            {% include 'ingredients/page-parts/addingredientsform.html.twig' %}#}
+{#        </div>#}
     </div>
 {% endblock %}
 {% block scripts %}
@@ -21,7 +22,9 @@
             select = $('#form-category-select'),
             category = parseInt({{ category }}),
             editButton = $('.edit-button'),
-            deleteButton = $('.delete-button');
+            deleteButton = $('.delete-button'),
+            categoryFilterLine = $('#category-filter-line'),
+            addIngredientFormLine = $('#add-ingredient-form-line');
     </script>
     <script src="js/filter.js"></script>
     <script src="js/ingredients.js"></script>
