@@ -1,0 +1,42 @@
+<div class="container inspiration-view" id="add-inspiration-form" style="display: none">
+    <h2>
+        Add inspiration
+    </h2>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="inspiration-name" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Link</label>
+        <input type="text" id="inspiration-link" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Picture link (optional)</label>
+        <input type="text" id="inspiration-picture-link" class="form-control"/>
+    </div>
+    <div class="text-right">
+        <button type="button"
+                class="btn btn-sm btn-outline-light action-button"
+                data-action="change-view"
+                data-target="#tile-view"
+        >
+            Back to tile view
+        </button>
+        <button type="button"
+                class="btn btn-sm btn-outline-light action-button"
+                data-action="change-view"
+                data-target="#list-view"
+        >
+            Back to list view
+        </button>
+        <button type="button"
+                class="btn btn-sm btn-outline-success action-button"
+                data-action="save-inspiration"
+                data-target_name="#inspiration-name"
+                data-target_link="#inspiration-link"
+                data-target_picture="#inspiration-picture-link"
+        >
+            Save inspiration
+        </button>
+    </div>
+</div>

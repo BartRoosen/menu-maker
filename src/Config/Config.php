@@ -20,4 +20,7 @@ class Config
 
     /* Pictures default path */
     const PIC_DEFAULT_PATH = 'img';
+
+    const DEFAULT_COMPLEXITY = 1;
+    const DEFAULT_TIME = 1.00;
 }

@@ -90,3 +90,15 @@ add-new-ingredient:
   uri: /add-new-ingredient/
   controller: AjaxController
   action: AddNewIngredient
+remove-inspiration:
+  uri: /remove-inspiration/
+  controller: AjaxController
+  action: removeInspiration
+add-inspiration-as-dish:
+  uri: /add-inspiration-as-dish/
+  controller: AjaxController
+  action: addInspirationAsDish
+save-inspiration:
+  uri: /save-inspiration/
+  controller: AjaxController
+  action: saveInspiration

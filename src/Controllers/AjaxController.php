@@ -5,6 +5,7 @@ namespace Controllers;
 
 use Data\DishesDataHandler;
 use Data\IngredientsDataHandler;
+use Data\InspirationDataHandler;
 use Data\MenuDataHandler;
 use Data\PreferenceDataHandler;
 use Data\UnitDataHandler;
@@ -263,6 +264,56 @@ class AjaxController extends AbstractController
             $ingredientDataHandler->addNewIngredient($_POST);
 
             echo json_encode('The ingredient is being added...');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function removeInspiration()
+    {
+        if (isset($_POST, $_POST['id']) && '' !== $_POST['id']) {
+            $inspirationDataHandler = new InspirationDataHandler();
+            $inspirationDataHandler->removeInspiration($_POST);
+
+            echo json_encode('The inspiration is being removed...');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function addInspirationAsDish()
+    {
+        if (isset($_POST, $_POST['name']) && '' !== $_POST['name']) {
+            $dishDataHandler = new DishesDataHandler();
+            $dishDataHandler->addInspirationAsDish($_POST);
+
+            echo json_encode('The inspiration is being added to the list of dishes...');
+            die;
+        }
+
+        echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function saveInspiration()
+    {
+        if (
+            isset($_POST, $_POST['name'], $_POST['link'], $_POST['picture']) &&
+            '' !== $_POST['name'] &&
+            '' !== $_POST['link']
+        ) {
+            if ('' === $_POST['picture']) {
+                $_POST['picture'] = null;
+            }
+
+            $inspirationDataHandler = new InspirationDataHandler();
+            $inspirationDataHandler->saveInspiration($_POST);
+
+            echo json_encode('The inspiration is being saved...');
             die;
         }
 

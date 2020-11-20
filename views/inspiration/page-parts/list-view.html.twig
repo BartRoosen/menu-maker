@@ -1,0 +1,43 @@
+<div class="container inspiration-view" id="list-view" style="display: none">
+    {% include 'inspiration/page-parts/view-changers.html.twig' %}
+    {% if null == inspirations %}
+        No inspiration found
+    {% else %}
+        {% for inspiration in inspirations %}
+            {% set pictureLink = base_path ~'/img/no-pic.jpg' %}
+            {% if null != inspiration.picture %}
+                {% set pictureLink = inspiration.picture %}
+            {% endif %}
+            <div class="list-view-row">
+                <div class="row">
+                    <div class="col-1">
+                        <div class="tiny-picture"
+                             style="background-image: url('{{ pictureLink }}')">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h3>{{ inspiration.caption | capitalize }}</h3>
+                    </div>
+                    <div class="col-2">
+                        <a class="inspiration-link" href="{{ inspiration.link }}" target="_blank">Visit website</a>
+                    </div>
+                    <div class="col-3 text-right padding-right-15">
+                        {% if inspiration.caption not in dishNames %}
+                            <button class="btn btn-sm btn-outline-light action-button"
+                                    data-action="add-inspiration-as-dish"
+                                    data-name="{{ inspiration.caption }}"
+                            >
+                                Add to dishes
+                            </button>
+                        {% endif %}
+                        <button class="btn btn-sm btn-outline-light action-button"
+                                data-id="{{ inspiration.id }}"
+                                data-action="remove-inspiration"
+                        >Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

@@ -91,7 +91,7 @@ div {
 .loading, .form-modal {
     background-color: rgba(0, 0, 0, .3);
     width: 100%;
-    height: 100%;
+    height: 800%;
     position: absolute;
     top: 0;
     z-index: 8888;
@@ -135,4 +135,79 @@ div {
 .nav-button {
     width: 100%;
     margin: 0.5em;
+}
+
+.inspiration {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 30%;
+    float: left;
+    height: 20em;
+    overflow: hidden;
+    margin: 0 1em 1em 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.inspiration-caption, .link-container {
+    width: 100%;
+    height: 10em;
+    padding: .5em;
+}
+
+.inspiration-caption {
+    background-color: rgba(102, 195, 34, 1);
+    height: 10em;
+    margin-top: -10em;
+}
+
+.link-container {
+    /*background-color: rgba(102, 195, 34, 0.6);*/
+    position: relative;
+    background-color: rgba(255, 127, 39, 0.7);
+    height: 13em;
+    margin-top: 20em;
+}
+
+.inspiration-link {
+    text-decoration: none;
+    color: #eee;
+}
+
+.inspiration-link:hover {
+    text-decoration: none;
+    color: #eee;
+}
+
+.add-inspiration-to-dishes {
+    width: 100%;
+    padding: 0 1em 1em 0;
+    position: absolute;
+    bottom: 0;
+}
+
+.view-changers-container {
+    padding: 0.3em;
+}
+
+.view-changers {
+    margin-right: 0.3em;
+    color: rgba(102, 195, 34, 1);
+    cursor: pointer;
+}
+
+.list-view-row {
+    border: 1px solid rgba(102, 195, 34, 1);
+    margin-bottom: 1em;
+    padding-top: 1.5em;
+    height: 5em;
+}
+
+.tiny-picture {
+    height: 5em;
+    width: 5em;
+    margin-top: -1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }

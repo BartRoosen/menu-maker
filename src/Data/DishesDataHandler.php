@@ -4,6 +4,7 @@
 namespace Data;
 
 
+use Config\Config;
 use Entities\Complexity;
 use Entities\Dish;
 
@@ -172,6 +173,19 @@ class DishesDataHandler extends AbstractDataHandler
                 'ingredientId' => $post['ingredientId'],
                 'amount'       => $post['amount'],
                 'unit'         => $post['unit'],
+            ]
+        );
+    }
+
+    public function addInspirationAsDish($post)
+    {
+        $this->insert('
+                        insert into dishes (name, complexity, time) values 
+                (:name, :complexity, :time);',
+            [
+                ':name'       => $post['name'],
+                ':complexity' => Config::DEFAULT_COMPLEXITY,
+                ':time'       => Config::DEFAULT_TIME,
             ]
         );
     }
