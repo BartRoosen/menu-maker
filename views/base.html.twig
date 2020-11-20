@@ -6,8 +6,12 @@
 
 <body>
 {% include 'shared/header.html.twig' %}
+{% include 'shared/menu.html.twig' %}
+{% include 'shared/page-title.html.twig' %}
 <div class="custom_container">
-    {% block body %}{% endblock %}
+    {% block body %}
+
+    {% endblock %}
 </div>
 {% include 'shared/message-box.html.twig' %}
 {% include 'shared/loading.html.twig' %}

@@ -40,7 +40,7 @@ deleteMenuItem = function (id) {
         }).done(function () {
             setTimeout(function () {
                 window.location = window.location.href;
-            }, 2000);
+            }, 1500);
         });
     }
 };
@@ -67,7 +67,7 @@ $('.dish-select').on('change', function () {
             $('#view_' + id).html($(selectOption).text());
             $('.list_views').show();
             $('.list_forms').hide();
-        }, 2000);
+        }, 1500);
     });
 });
 
@@ -119,6 +119,6 @@ body.on('click', '.dish-selector', function () {
     }).done(function () {
         setTimeout(function () {
             window.location = window.location.href;
-        }, 2000);
+        }, 1500);
     });
 });

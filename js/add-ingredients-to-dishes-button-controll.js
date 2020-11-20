@@ -21,7 +21,7 @@ addIngredientToDishSaveButton.on('click', function () {
     }).done(function () {
         setTimeout(function () {
             window.location = window.location.href;
-        }, 2000);
+        }, 1500);
     });
 });
 
@@ -53,7 +53,7 @@ deleteIngredient.on('click', function () {
         }).done(function () {
             setTimeout(function () {
                 window.location = window.location.href;
-            }, 2000);
+            }, 1500);
         });
     }
 });

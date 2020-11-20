@@ -12,7 +12,7 @@ showMessage = function (message, delay) {
     hideMessage(messageBoxDiv, loading, delay);
 };
 
-hideMessage = function (messageBoxDiv, loading, delay = 2000) {
+hideMessage = function (messageBoxDiv, loading, delay = 3000) {
     setTimeout(function () {
         messageBoxDiv.animate({
             opacity: 0

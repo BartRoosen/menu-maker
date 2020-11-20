@@ -58,7 +58,7 @@ saveNewUnit = function () {
         setTimeout(function () {
             addUnitForm.hide();
             addLineToTable({id: newId, name: newName});
-        }, 2000);
+        }, 1500);
     });
 };
 
@@ -89,7 +89,7 @@ saveChanges = function () {
         setTimeout(function () {
             $(changeId).html(data.name);
             editModal.hide();
-        }, 2000);
+        }, 1500);
     });
 
 };
@@ -107,7 +107,7 @@ deleteUnit = function (id) {
         }).done(function () {
             setTimeout(function () {
                 $('#line_' + id).remove();
-            }, 2000);
+            }, 1500);
         });
     }
 };
