@@ -102,3 +102,7 @@ save-inspiration:
   uri: /save-inspiration/
   controller: AjaxController
   action: saveInspiration
+get-shopping-list:
+  uri: /get-shopping-list/
+  controller: AjaxController
+  action: getShoppingList

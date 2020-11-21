@@ -62,11 +62,14 @@ class DishesController extends AbstractController
 
     public function addIngredients($dishId)
     {
+        $dish = $this->dishesDataHandler->getDishById($dishId);
+
         return $this->twigService->render('dishes/add-ingredients.html.twig', [
             'base_path'   => $this->basePath,
             'title'       => Config::SITE_NAME,
             'menuItems'   => $this->menuItems,
-            'dish'        => $this->dishesDataHandler->getDishById($dishId),
+            'dish'        => $dish,
+            'pageName'    => $dish->getName(),
             'ingredients' => $this->ingredientsDataHandler->getIngredientsByDishId($dishId),
             'notSelected' => $this->ingredientsDataHandler->getNonSelectedIngredientsByDishId($dishId),
             'categories'  => $this->ingredientsDataHandler->getCategories(),

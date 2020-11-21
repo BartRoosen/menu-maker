@@ -23,6 +23,7 @@ class ShoppingListController extends AbstractController
             'title'     => Config::SITE_NAME,
             'pageName'  => 'shopping list',
             'menuItems' => $this->menuItems,
+            'today'     => date('Y-m-d'),
         ]);
     }
 }

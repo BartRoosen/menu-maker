@@ -5,7 +5,111 @@
 {% endblock %}
 
 {% block body %}
-    {% include 'under_construction.html.twig' %}
+    <div class="container">
+        <div class="row" id="date-select-form">
+            <div class="col-2 no-print">
+                <div class="form-group">
+                    <label>Start date</label>
+                    <input type="date" id="start_date" min="{{ today }}" class="form-control date-selector"/>
+                </div>
+                <div class="form-group">
+                    <label>Start date</label>
+                    <input type="date" id="end_date" min="{{ today }}" class="form-control date-selector"/>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-sm btn-outline-success print-button">Print shopping list</button>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8" id="list"></div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
 {% endblock %}
 {% block scripts %}
+    <script>
+        let body = $('body'),
+            startText = '<div class="alert alert-light">Select a start and end date to generate a list of suggested items to buy</div>';
+
+        $(document).ready(function () {
+            appendStartText();
+        });
+
+        appendStartText = function () {
+            $('#list').append(startText);
+        };
+
+        body.on('change', '.date-selector', function () {
+            let startDate = $('#start_date').val(),
+                endDate = $('#end_date').val();
+
+            if ('' !== startDate && '' !== endDate && typeof startDate !== 'undefined' && typeof endDate !== 'undefined') {
+                $.ajax({
+                    type: 'POST',
+                    data: {
+                        startDate: startDate,
+                        endDate: endDate
+                    },
+                    url: './get-shopping-list/',
+                    dataType: 'json',
+                    success: function (response) {
+                        if ('empty' === response.result) {
+                            $('#list').html(response.message);
+                        }
+
+                        if ('false' === response.result) {
+                            showMessage(response.message);
+                        }
+
+                        if ('success' === response.result) {
+                            createList(response.list);
+                        }
+                        // alert(response);
+                    },
+                }).done(function () {
+                    setTimeout(function () {
+
+                    }, 1500);
+                });
+            }
+        });
+
+        createList = function (list) {
+            let listDiv = $('#list'), speed = 0;
+
+            listDiv.html('');
+            listDiv.append('<h3>Suggested items</h3><p class="no-print">Mark those you DON\'T need to buy...</p>');
+            $.each(list, function (key, listItem) {
+                setTimeout(function () {
+                    listDiv.append(
+                        '<div class="shopping-list-item">' +
+                        '<div class="row">' +
+                        '<div class="col-6">' + listItem.name + '</div>' +
+                        '<div class="col-6 text-right">' + listItem.amount + ' ' + listItem.unit + '</div>' +
+                        '</div>' +
+                        '</div>'
+                    );
+                }, speed);
+                speed = speed + 300;
+            });
+        };
+
+        body.on('click', '.shopping-list-item', function () {
+            let self = $(this);
+            if (self.hasClass('orange')) {
+                self.removeClass('orange');
+            } else {
+                self.addClass('orange');
+            }
+        });
+
+        $('.print-button').on('click', function () {
+            window.print();
+        });
+    </script>
 {% endblock %}

@@ -211,3 +211,19 @@ div {
     background-position: center;
     background-size: cover;
 }
+
+.shopping-list-item {
+    padding: 0.5em;
+    border: 1px solid rgba(102, 195, 34, 1);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.orange {
+    color: #4e555b;
+    text-decoration: line-through;
+}
+
+@media print {
+    .no-print, .orange { display:none; }
+}

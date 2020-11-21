@@ -5,10 +5,6 @@
 {% endblock %}
 
 {% block body %}
-    {% include 'shared/menu.html.twig' %}
-    <div class="text-center">
-        <h1 class="dish-title">{{ dish.name | capitalize }}</h1>
-    </div>
     <div class="row">
         <div class="col-4">
             {% include 'dishes/page-parts/dish-info.html.twig' %}

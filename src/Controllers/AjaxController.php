@@ -8,6 +8,7 @@ use Data\IngredientsDataHandler;
 use Data\InspirationDataHandler;
 use Data\MenuDataHandler;
 use Data\PreferenceDataHandler;
+use Data\ShoppingListDataHandler;
 use Data\UnitDataHandler;
 use Services\SessionService;
 
@@ -318,6 +319,44 @@ class AjaxController extends AbstractController
         }
 
         echo json_encode('Something went wrong, please try again');
+        die;
+    }
+
+    public function getShoppingList()
+    {
+        if (
+            isset($_POST, $_POST['startDate'], $_POST['endDate']) &&
+            '' !== $_POST['startDate'] &&
+            '' !== $_POST['endDate']
+        ) {
+            $shoppingListDataHandler = new ShoppingListDataHandler();
+            $shoppingList            = $shoppingListDataHandler->getShoppingListByPeriod($_POST);
+
+            if (null === $shoppingList) {
+                echo json_encode(
+                    [
+                        'result'  => 'empty',
+                        'message' => 'No results for this period...',
+                    ]
+                );
+                die;
+            }
+
+            echo json_encode(
+                [
+                    'result' => 'success',
+                    'list'   => $shoppingList,
+                ]
+            );
+            die;
+        }
+
+        echo json_encode(
+            [
+                'result'  => 'false',
+                'message' => 'Something went wrong, please try again'
+            ]
+        );
         die;
     }
 }
